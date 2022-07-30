@@ -1,5 +1,5 @@
 import React from "react";
-import './style.scss';
+import style from './List.module.scss';
 
 function List() {
   const tasks = [
@@ -16,7 +16,7 @@ function List() {
       time:"03:00:00"
     }]
   return(
-    <aside className="taskList">
+    <aside className={style.taskList}>
       <h2>Studies of the day</h2>
       <ul>
          {tasks.map((item, index) =>(
