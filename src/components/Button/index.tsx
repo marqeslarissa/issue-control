@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Button.module.scss';
 
-class Button extends React.Component {
+class Button extends React.Component<{ text: string }> {
   render() {
     // const estaAtivo= true; //inline style
     // const styles= {
@@ -10,7 +10,7 @@ class Button extends React.Component {
 
     return (
       <button className={style.button}> 
-        Button
+        {this.props.text}
       </button>
     )
   }

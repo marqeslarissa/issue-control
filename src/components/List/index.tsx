@@ -1,12 +1,13 @@
 import React from "react";
+import Item from "./item";
 import style from './List.module.scss';
 
 function List() {
   const tasks = [
     {
-      task: 'React', 
+      task: 'React',
       time:"02:00:00"
-    }, 
+    },
     {
       task: 'Javascript',
       time:"01:00:00"
@@ -20,10 +21,12 @@ function List() {
       <h2>Studies of the day</h2>
       <ul>
          {tasks.map((item, index) =>(
-          <li key={index}>
-            <h3>{item.task}</h3>
-          <span>{item.time}</span>
-          </li>
+           <Item
+           key={index}
+            {...item}
+            // task={item.task}  == o {...item} funciona dessa maneira
+            // time={item.time}
+           />
          ))}
       </ul>
     </aside>
