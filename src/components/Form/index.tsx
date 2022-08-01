@@ -3,22 +3,32 @@ import Button from '../Button';
 import style from './Form.module.scss';
 
 class Form extends React.Component {
-  render(){
-    return(
-      <form className={style.newTask}>
+  state = {
+    task: "",
+    time: "00:00:00"
+  }
+
+  addTask(evento: React.FormEvent<HTMLFormElement>){
+    evento.preventDefault();
+    console.log('state: ', this.state);
+  }
+
+  render() {
+    return (
+      <form className={style.newTask} onSubmit={this.addTask.bind(this)}>
         <div className={style.inputContainer}>
           <label htmlFor="task">
-              Add a new study
+            Add a new study
           </label>
-          <input type="text" name="task" id="task" placeholder="What do you want study" required />
+          <input type="text" name="task" value={this.state.task} onChange={evento => this.setState({...this.state, task: evento.target.value})} id="task" placeholder="What do you want study" required />
         </div>
         <div>
           <label htmlFor="time">
             Time
           </label>
-          <input type="time" name="time" id="time" step="1" min="00:00:00" max="01:30:00" required />
+          <input type="time" name="time" value={this.state.time} onChange={evento => this.setState({ ...this.state, time: evento.target.value })} id="time" step="1" min="00:00:00" max="01:30:00" required />
         </div>
-        <Button text="Add"/>
+        <Button type="submit" text="Add" />
       </form>
     )
   }
